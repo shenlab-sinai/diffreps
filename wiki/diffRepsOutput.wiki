@@ -6,16 +6,16 @@
 || *Start* ||1-based start coordinate||
 || *End* ||1-based end coordinate (inclusive)||
 || *Length* ||Length of the differential site in bps||
-|| *Treatment.cnt* ||Normalized read counts of the treatment group(separated by semi-colon)||
-|| *Control.cnt* ||Normalized read counts of the control group(separated by semi-colon)||
-|| *Treatment.avg* ||Avg. count(normalized) of the treatment group||
-|| *Control.avg* ||Avg. count(normalized) of the control group||
-|| *Treatment.enr* ||Fold enrichment vs. input based on avg. count(normalized) for treatment group||
-|| *Control.enr* ||Fold enrichment vs. input based on avg. count(normalized) for control group||
+|| *Treatment.cnt* ||Normalized read counts of the treatment group (separated by semi-colon)||
+|| *Control.cnt* ||Normalized read counts of the control group (separated by semi-colon)||
+|| *Treatment.avg* ||Avg. count (normalized) of the treatment group||
+|| *Control.avg* ||Avg. count (normalized) of the control group||
+|| *Treatment.enr* ||Fold enrichment vs. input based on avg. count (normalized) for treatment group||
+|| *Control.enr* ||Fold enrichment vs. input based on avg. count (normalized) for control group||
 || *Event* ||Direction of enrichment change using the control group as reference||
 || *log2FC* ||Log2 fold change||
 || *pval* ||P-value||
-|| *padj* ||BH-adjusted p-value(FDR)||
+|| *padj* ||BH-adjusted p-value (FDR)||
 || *winSta* ||Start coordinate of the core window which is the window with most significant p-value among the site||
 || *winEnd* ||End coordinate of the core window||
 || *winFC* ||Log2 fold change of the core window||
