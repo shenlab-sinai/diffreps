@@ -1,7 +1,7 @@
+#summary Explanation of the different columns in diffReps' output.
 #labels Featured
-# Explanation of the different columns in diffReps' output.
 
-
+|| *Column Name* || *Explanation* ||
 || *Chrom* ||Chromosome name||
 || *Start* ||1-based start coordinate||
 || *End* ||1-based end coordinate (inclusive)||
