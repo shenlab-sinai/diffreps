@@ -1,6 +1,7 @@
 #summary Explanation of the different columns in diffReps' output.
 #labels Featured
 
+=diffReps=
 || *Column Name* || *Explanation* ||
 || *Chrom* ||Chromosome name||
 || *Start* ||1-based start coordinate||
@@ -28,3 +29,17 @@
 || *TES* ||Associated transcript end site||
 || *Feature* ||Classification of the site's location||
 || *D2TSS* ||Distance from the site center to the associated transcript's TSS||
+
+=findHotspots=
+|| *Column Name* || *Explanation* ||
+|| *Chrom* ||Chromosome name||
+|| *Start* ||1-based start coordinate||
+|| *End* ||1-based end coordinate (inclusive)||
+|| *Length* ||Length of the hotspot in bps||
+|| *enrich* ||Enrichment ratio (compared with background)||
+|| *pval* ||P-value of enrichment||
+|| *padj* ||Adjusted p-value||
+|| *nsite* ||Number of differential sites in the hotspot||
+|| *Sites* ||One-string description of the hotspots. The differential sites are separated by semi-colon. Each differential site is described by filename:(info columns separated by comma):line_number.||
+|| *ntype* ||Number of different types of chromatin marks in the hotspot||
+|| *MarkType* ||Unique chromatin marks in the hotspot. In order for findHotspots to recognize mark names, you must make the diffReps output file names contain "standard" chromatin mark names. Such as, diffout.h3k4me3.txt, diffout.h3k9ac.txt, diffout.polII.txt. If it cannot recognize the marks, it will put the whole file names here.||
