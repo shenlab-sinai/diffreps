@@ -1,14 +1,13 @@
 NEWS
 ----
-
-diffReps manuscript has been published by PLoS ONE! Link: <http://dx.plos.org/10.1371/journal.pone.0065598>
+The diffReps project has migrated from Google code to Github.
 
 NEWEST CHANGES & BUG FIXES
 --------------------------
 
 Please visit diffReps' discussion group for announcements and bug fixes:
 
-<https://groups.google.com/forum/?fromgroups>\#!forum/diffreps-discuss
+<https://groups.google.com/forum/?fromgroups\#!forum/diffreps-discuss>
 
 NEW REGION ANALYSIS PROGRAM
 ---------------------------
@@ -36,7 +35,11 @@ PREREQUISITES
 -------------
 
 diffReps requires the following two CPAN modules:
-
+```perl
+Statistics::TTest
+Math::CDF
+Parallel::ForkManager
+```
 they can be downloaded and installed from CPAN. If you use cpanminus to install diffReps, they will be automatically installed.
 
 Some systems have reported missing package \`Time::HiRes\`. If that is the case, it can be installed from CPAN or your choice of package manager. To test if it is already installed, use \`perldoc Time::HiRes\`.
@@ -45,11 +48,18 @@ INSTALLATION
 ------------
 
 Installing diffReps is just like a standard PERL module. Basically you extract the package downloaded, go to the program directory and type the following commands:
-
+```
+perl Makefile.PL (Optional, PREFIX=your_perl_directory)
+make
+make test
+make install
+```
 If you have root privileges, diffReps.pl will most likely be installed in /usr/bin/. If you specified PREFIX in Makefile, it will be installed in your\_perl\_directory/bin. Add your\_perl\_directory/bin to your PATH environmental variable, or copy diffReps.pl from your\_perl\_directory/bin to a directory that is already in PATH, such as /home/yourname/bin.
 
 Alternative. If you have cpanminus installed, you can also install diffReps with one line command
-
+```
+cpanm diffReps-XXX.tar.gz
+```
 it will try to satisfy all the dependencies for you.
 
 USE REGION ANALYSIS
@@ -63,6 +73,12 @@ CHROMOSOME LENGTHS
 ------------------
 
 It is important to supply diffReps with chromosome length information. diffReps requires that to bin the chromosomes into smaller sections. diffReps has a few genomes built-in so what you need to do is just give a genome name, such as mm9 or hg19. If the genome you are interested in is not already defined, you can give a text file for chorosome lengths. An example input is like
+```
+chr1    197195431
+chr2    181748086
+chr3    159599782
+...
+```
 
 A NOTE ABOUT STATISTICAL TESTS
 ------------------------------
@@ -85,7 +101,9 @@ diffReps includes a script for annotation of a differential sites list. By defau
 || \*ProximalPromoter\* ||+/- 250bp of TSS|| || \*Promoter1k\* ||+/- 1kbp of TSS|| || \*Promoter3k\* ||+/- 3kbp of TSS|| || \*Genebody\* ||Anywhere between a gene's promoter and up to 1kbp downstream of the TES.|| || \*Genedeserts\* ||Genomic regions that are depleted with genes and are at least 1Mbp long.|| || \*Pericentromere\* ||Between the boundary of a centromere and the closest gene minus 10kbp of that gene's regulatory region.|| || \*Subtelomere\* ||Similary defined as pericentromere.|| || \*OtherIntergenic\* ||Any region that does not belong to the above categories.||
 
 The script can also be triggered manually. For example, if you want to annotate a differential list diff.h3k4me3.txt, you can use command like:
-
+```
+region_analysis.pl -i diff.h3k4me3.txt -r -d refseq -g mm9
+```
 will annotate the list using reference genome mm9 and the RefSeq database. The output will write to diff.h3k4me3.txt.annotated.
 
 FINDING HISTONE MODIFICATION HOTSPOTS
@@ -94,15 +112,20 @@ FINDING HISTONE MODIFICATION HOTSPOTS
 The distance between two adjacent differential sites can be approximated by a Poisson distribution if they were positioned by random allocation. In reality, differential sites are often discovered to be spatially clustered together, forming so called chromatin modification hotspots. diffReps finds the hotspots by first building a null model on site-to-site distance, and then looking for regions that violate the null model with statistical significance using greedy search. diffReps reports the start, end positions as well as associated p-values and FDR of the hotspots. In addition, diffReps can accept more than one differential list of different histone marks as input, so that one can predict hotspots that show interaction between two or more histone marks.
 
 By default, the finding hotspots routine will be called after diffReps finishes detecting differential sites. It will try to identify hotspots from the differential list just generated. The routine can also be used separately. For example, if you have two differential lists named diff.h3k4me3.txt and diff.polII.txt, you can look for hotspots that represent the interaction between H3K4me3 and Pol II using command like:
-
+```
+findHotspots.pl -d diff.h3k4me3.txt diff.polII.txt -o hotspot_k4.pol2.txt
+```
 will generate a hotspots list in "hotspot\_k4.pol2.txt" file.
 
 EXAMPLES
 --------
 
 diffReps requires input of BED files for ChIP-seq alignments for both treatment and control groups. BED files can be converted from any alignment format, such as BAM(Tip: you can use BedTools for this). An example of using diffReps for differential analysis is as follows
-
-The output will be in diff.nb.txt file. If you want to specify your own chromosome/scaffold size in a text file such as chrlen.txt, you can use this: By default, a sliding window of 1kbp is used with a moving step size of 100bp. There are other parameters that can be tuned for your data. Just type diffReps.pl in command console without specifying any arguments and hit Enter, you will see a usage summary.
+```
+diffReps.pl -tr C1.bed C2.bed C3.bed -co S1.bed S2.bed S3.bed -gn mm9 \
+-re diff.nb.txt -me nb
+```
+The output will be in diff.nb.txt file. If you want to specify your own chromosome/scaffold size in a text file such as chrlen.txt, you can use this: `-ch chrlen.txt OR --chrlen chrlen.txt`. By default, a sliding window of 1kbp is used with a moving step size of 100bp. There are other parameters that can be tuned for your data. Just type diffReps.pl in command console without specifying any arguments and hit Enter, you will see a usage summary.
 
 RUNNING TIME
 ------------
@@ -121,14 +144,13 @@ Shen L, Shao N-Y, Liu X, Maze I, Feng J, et al. (2013) diffReps: Detecting Diffe
 
 PAPERS THAT CITE DIFFREPS
 -------------------------
+A list of papers that cite diffReps found by Google Scholar:
 
-We now have the first official paper that cites diffReps:
-
--   Sun H, Maze I, Dietz DM, Scobie KN, Kennedy PJ, Damez-Werno D, Neve RL, Zachariou V, Shen L, Nestler EJ. Morphine Epigenomically Regulates Behavior through Alterations in Histone H3 Lysine 9 Dimethylation in the Nucleus Accumbens. The Journal of neuroscience : the official journal of the Society for Neuroscience 2012 Nov; 32(48).\*
+<https://scholar.google.com/scholar?hl=en&as_sdt=5,33&cites=11143041154318133867&scipsc=&q=&scisbd=1>
 
 Let us know if you have used diffReps in your research!
 
 CONTACT
 -------
 
-diffReps is developed and maintained by Drs. Li Shen and Ningyi Shao at the Icahn School of Medicine at Mount Sinai. Correspondence: li.shen@mssm.edu
+diffReps is developed and maintained by Dr. Li Shen at the Icahn School of Medicine at Mount Sinai. For technical issues, please post your questions to the discussion forum. If you want to collaborate with us, you may write to:  li.shen@mssm.edu
