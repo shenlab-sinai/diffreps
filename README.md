@@ -1,6 +1,6 @@
 NEWS
 ----
-The diffReps project has migrated from Google code to Github.
+The diffReps project has migrated from Google code to Github. The original download files can be found in the **Downloads** folder.
 
 NEWEST CHANGES & BUG FIXES
 --------------------------
