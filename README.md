@@ -124,7 +124,7 @@ By default, the finding hotspots routine will be called after diffReps finishes 
 ```
 findHotspots.pl -d diff.h3k4me3.txt diff.polII.txt -o hotspot_k4.pol2.txt
 ```
-will generate a hotspots list in "hotspot\_k4.pol2.txt" file.
+will generate a hotspots list in `hotspot_k4.pol2.txt` file.
 
 EXAMPLES
 --------
@@ -149,7 +149,7 @@ diffReps is free for use by academic users. If you want to use it in commercial 
 HOW TO CITE
 -----------
 
-Shen L, Shao N-Y, Liu X, Maze I, Feng J, et al. (2013) diffReps: Detecting Differential Chromatin Modification Sites from ChIP-seq Data with Biological Replicates. PLoS ONE 8(6): e65598. <doi:10.1371/journal.pone.0065598>
+Shen L, Shao N-Y, Liu X, Maze I, Feng J, et al. (2013) diffReps: Detecting Differential Chromatin Modification Sites from ChIP-seq Data with Biological Replicates. PLoS ONE 8(6): e65598.
 
 PAPERS THAT CITE DIFFREPS
 -------------------------
