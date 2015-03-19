@@ -1,0 +1,33 @@
+* Add robust estimate for mean and std (Done);
+* Flexible input for findHotspots (Done);
+* Allow chromosome name to have more relaxed format (DONE);
+* Multiple core support (quick and dirty fix of PP);
+* Control short read redundancy internally;
+* Support BAM input;
+* Check number of replicates for different testing methods (DONE)
+* Delete files using PERL API instead of 'rm' (done for main program)
+* findHotspots.pl column meaning Wiki (DONE)
+* Remove intermediate files even if the program exits (DONE)
+* Re-organize modules and documentation (DONE)
+
+
+====These are the modules included in diffReps:====
+MyBioinfo::Common
+MyBioinfo::Math
+MyBioinfo::NBTest
+MyShortRead::ChromBed
+MyShortRead::MyShortRead
+MyShortRead::SRBed
+PJ::Database::Root
+PJ::Genome
+diffReps::ChromaModSite
+diffReps::DiffRes
+
+
+====Some future improvements to think about:====
+* PCR redundancy removal and its impact on differential analysis
+* Better negative binomial test algorithm
+* MapReduce implementation
+* Better normalization algorithm
+* Re-implementation in Python
+* Down-stream annotation and analysis

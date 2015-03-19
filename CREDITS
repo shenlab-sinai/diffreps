@@ -1,0 +1,21 @@
+== Developer(s) ==
+
+diffReps package is developed and maintained by Li Shen, Ph.D., Assistant Professor
+at the Mount Sinai School of Medicine, Email: li.shen@mssm.edu.
+
+
+== External programs ==
+
+region_analysis.pl makes use of two external programs, refgene_getnearestgene 
+and intersectBed. The former is extracted from cisgenome v1.2 and the credits 
+should go to Hongkai Ji, Ph.D., Assistant Professor, Email: hji@jhsph.edu.
+
+intersectBed is from BEDTools which has a public Google code page:
+
+http://code.google.com/p/bedtools/
+
+and the credits should go to Aaron Quinlan at The University of Virginia 
+(http://cphg.virginia.edu/quinlan)
+
+== End ==
+

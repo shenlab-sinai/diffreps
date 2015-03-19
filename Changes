@@ -1,0 +1,81 @@
+Revision history for diffReps.
+
+
+
+1.55.4 Wed Sep 25 2013
+    - Some code re-written (added DEBUG directive).
+    - Fixed a bug introduced in v1.55.3 which can cause temporary chromosome 
+      files to be deleted prematurely when more than one processes are used.
+    - Strengthened the reliability against exceptions.
+
+1.55.3 Thu Sep 12 2013
+    - diffReps will now remove intermediate files even if it dies from 
+      exceptions.
+    - The POD of diffReps modules are re-written so that they are more 
+      informative.
+    - Use Perl built-in functions to delete intermediate files instead of 
+      external "rm" in the main program, making it more friendly to Windows 
+      users.
+    - Corrected some version numbers.
+
+
+1.55.2 Sat Aug 31 2013
+    - Corrected some mistakes in Makefile.PL.
+    - Made the program aware of the number of required replicates when nb and 
+      tt are selected.
+
+1.55  Wed Jun 26 2013
+    - Allow chromosome names to have more flexible format.
+    - added example/norm.txt.
+
+1.54  Fri Nov 2 2012
+    - A quick-and-dirty implementation of parallel processing.
+    - findHotspots now accepts option to specify columns to extract.
+    - New default values for option "--nsd": broad(2) and sharp(20) peaks.
+    - Column "logFC" is renamed to "log2FC" to avoid any ambiguity.
+
+1.43  Mon Jul 23 2012
+    - The null model used in findHotspot has been changed to local Poisson.
+    - Added support for background samples, such as DNA input or IgG, to 
+      calculate enrichment for each differential site.
+    - Filter windows based on background enrichment (using this can make 
+      detection >2 times slower).
+    - Misc. improvement to make detecting differential sites more efficient 
+      (~70% faster).
+
+1.33  Tue Jun 19 2012
+    - Output average read count for each site for further filtering purpose.
+    - Output diffReps version and full command used.
+
+1.32  Fri Mar 23 2012
+    - Added script and database files for automatic annotation of differential
+      sites.
+    - Added script to look for chromatin modification hotspots from diffReps
+      results.
+      
+1.12  Thu Mar 22 2012
+    - Added robust estimation for background mean and deviation. Right-trimmed
+      mean is used to replace arithmetic average. Median absolute deviation is
+      used to replace standard deviation.
+    - Robust estimation is done on a sub-sample of 100,000 bins instead of the 
+      whole genome to save compuational cost and memory usage.
+
+1.02  Thu Mar 8 2012
+    - fixed a bug that will generate a warning message if you provide your own
+      chromosome length file.
+    - added a routine to choose window and step size more sensiblely and prevent
+      weird values.
+
+1.01  Fri Mar 2 2012
+    - fixed a tiny bug that will generate a warning message if round-off errors
+      cause the G-statistic to be a negative.
+    - added scripts to convert from ELAND and SAM alignment to BED files.
+    - added a script to remove redundant short reads.
+
+1.00  Wed Feb 29 2012
+    - a workable version created and tested.
+
+0.01  Sat Feb 25 15:49:37 2012
+    - original version; created by h2xs 1.23 with options
+    - AX -b 5.6.0 -n diffReps
+
