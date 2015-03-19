@@ -25,12 +25,12 @@ ChIP-seq is now widely used to profile the protein DNA interactions on a genome.
 
 In addition, diffReps has two easy-to-use tools. One is for quick genomic annotation of a differential site or peak list. Another is for finding chromatin modification hotspots (see below). diffReps is developed as an automated pipeline so that everything can be done in one command. In incorporates four different statistical tests, i.e. negative binomial, T-test, G-test and Chi-square test, for differential analysis. So no matter you have biological replicates or not, you can choose an appropriate test for your purpose.
 
--   I uploaded some slides about diffReps:\*
+I uploaded some slides about diffReps:
 
 <div style="margin-bottom:5px">
 <strong> <a href="http://www.slideshare.net/thefacultyl/diffreps-automated-chipseq-differential-analysis-package" title="diffReps: automated ChIP-seq differential analysis package" target="_blank">diffReps: automated ChIP-seq differential analysis package</a> </strong> from <strong><a href="http://www.slideshare.net/thefacultyl" target="_blank">Li Shen</a></strong>
-
 </div>
+
 PREREQUISITES
 -------------
 
@@ -42,7 +42,7 @@ Parallel::ForkManager
 ```
 they can be downloaded and installed from CPAN. If you use cpanminus to install diffReps, they will be automatically installed.
 
-Some systems have reported missing package \`Time::HiRes\`. If that is the case, it can be installed from CPAN or your choice of package manager. To test if it is already installed, use \`perldoc Time::HiRes\`.
+Some systems have reported missing package `Time::HiRes`. If that is the case, it can be installed from CPAN or your choice of package manager. To test if it is already installed, use `perldoc Time::HiRes`.
 
 INSTALLATION
 ------------
@@ -54,7 +54,7 @@ make
 make test
 make install
 ```
-If you have root privileges, diffReps.pl will most likely be installed in /usr/bin/. If you specified PREFIX in Makefile, it will be installed in your\_perl\_directory/bin. Add your\_perl\_directory/bin to your PATH environmental variable, or copy diffReps.pl from your\_perl\_directory/bin to a directory that is already in PATH, such as /home/yourname/bin.
+If you have root privileges, diffReps.pl will most likely be installed in `/usr/bin/`. If you specified PREFIX in Makefile, it will be installed in `your_perl_directory/bin`. Add `your_perl_directory/bin` to your PATH environmental variable, or copy diffReps.pl from `your_perl_directory/bin` to a directory that is already in PATH, such as `/home/yourname/bin`.
 
 Alternative. If you have cpanminus installed, you can also install diffReps with one line command
 ```
@@ -65,7 +65,7 @@ it will try to satisfy all the dependencies for you.
 USE REGION ANALYSIS
 -------------------
 
-Please be notified that the included "refgene\_getnearestgene" is built on Linux OS. If you are using Mac or Windows, you should download the corresponding program from cisgenome website: <http://www.biostat.jhsph.edu/~hji/cisgenome/> and over-write the one that is installed. To determine where the program is installed, use "which refgene\_getnearestgene".
+Please be notified that the included `refgene_getnearestgene` is built on Linux OS. If you are using Mac or Windows, you should download the corresponding program from cisgenome website: <http://www.biostat.jhsph.edu/~hji/cisgenome/> and over-write the one that is installed. To determine where the program is installed, use `which refgene_getnearestgene`.
 
 The diffReps main program should run on all OS. If you do not want region analysis, you can turn it off in commands.
 
@@ -85,7 +85,7 @@ A NOTE ABOUT STATISTICAL TESTS
 
 When you have biological replicates, Negative Binomial(NB) is the recommended test for differential analysis. An exact NB test is implemented in diffReps. Because NB distribution models discrete count data and over-dispersion among different samples, it appears to be an ideal model for ChIP-seq data. Many studies to date have used T-test on normalized counts for differential analysis. However, this is sub-optimal because normalized counts are NOT Normally distributed! As a result, detection power can be significantly degraded. Another caveat about T-test is that regions with very small counts may be picked up. Those regions should never pass cutoff because they don't have statistical significance. T-test ignores this fact because it simply treats them as continuous values. I still provide T-test in diffReps just for comparison purpose.
 
-If your experiment doesn't contain biological replicates, you can choose between G-test and Chi-square test for differential analysis. They both give similar results but G-test is more recommended and has gained its popularity recently. See "<http://en.wikipedia.org/wiki/G-test>" for explanation. When they are chosen, diffReps performs a goodness-of-fit test on the normalized counts of treatment and control groups.
+If your experiment doesn't contain biological replicates, you can choose between G-test and Chi-square test for differential analysis. They both give similar results but G-test is more recommended and has gained its popularity recently. See <http://en.wikipedia.org/wiki/G-test> for explanation. When they are chosen, diffReps performs a goodness-of-fit test on the normalized counts of treatment and control groups.
 
 You can also use G-test or Chi-square test on data WITH biological replicates. An incentive of doing this is that this may give you more sensitivity but with a possibility of incurring false positives. diffReps automatically combines the biological replicates and generate a probablity vector accordingly. That means, if you have TWO replicates for treatment group and THREE replicates for control group, the probablity vector will be adjusted to reflect the replicate number difference.
 
@@ -98,13 +98,22 @@ DIFFERENTIAL SITES ANNOTATION
 
 diffReps includes a script for annotation of a differential sites list. By default, it will be evoked after diffReps finished running and annotate the differential sites based on their locations to the nearest genes. If no nearby genes can be found, it will also associate the differential sites with heterochromatic regions. A differential site will be assigned to one of the following categories:
 
-|| \*ProximalPromoter\* ||+/- 250bp of TSS|| || \*Promoter1k\* ||+/- 1kbp of TSS|| || \*Promoter3k\* ||+/- 3kbp of TSS|| || \*Genebody\* ||Anywhere between a gene's promoter and up to 1kbp downstream of the TES.|| || \*Genedeserts\* ||Genomic regions that are depleted with genes and are at least 1Mbp long.|| || \*Pericentromere\* ||Between the boundary of a centromere and the closest gene minus 10kbp of that gene's regulatory region.|| || \*Subtelomere\* ||Similary defined as pericentromere.|| || \*OtherIntergenic\* ||Any region that does not belong to the above categories.||
+| Region | Descriptions |
+| ------ | ------------ |
+| ProximalPromoter | +/- 250bp of TSS | 
+| Promoter1k | +/- 1kbp of TSS | 
+| Promoter3k | +/- 3kbp of TSS | 
+| Genebody | Anywhere between a gene's promoter and up to 1kbp downstream of the TES. | 
+| Genedeserts | Genomic regions that are depleted with genes and are at least 1Mbp long. | 
+| Pericentromere | Between the boundary of a centromere and the closest gene minus 10kbp of that gene's regulatory region. | 
+| Subtelomere | Similary defined as pericentromere. | 
+| OtherIntergenic | Any region that does not belong to the above categories. |
 
 The script can also be triggered manually. For example, if you want to annotate a differential list diff.h3k4me3.txt, you can use command like:
 ```
 region_analysis.pl -i diff.h3k4me3.txt -r -d refseq -g mm9
 ```
-will annotate the list using reference genome mm9 and the RefSeq database. The output will write to diff.h3k4me3.txt.annotated.
+will annotate the list using reference genome mm9 and the RefSeq database. The output will write to `diff.h3k4me3.txt.annotated`.
 
 FINDING HISTONE MODIFICATION HOTSPOTS
 -------------------------------------
@@ -120,7 +129,7 @@ will generate a hotspots list in "hotspot\_k4.pol2.txt" file.
 EXAMPLES
 --------
 
-diffReps requires input of BED files for ChIP-seq alignments for both treatment and control groups. BED files can be converted from any alignment format, such as BAM(Tip: you can use BedTools for this). An example of using diffReps for differential analysis is as follows
+diffReps requires input of BED files for ChIP-seq alignments for both treatment and control groups. BED files can be converted from any alignment format, such as BAM (Tip: you can use BedTools for this). An example of using diffReps for differential analysis is as follows
 ```
 diffReps.pl -tr C1.bed C2.bed C3.bed -co S1.bed S2.bed S3.bed -gn mm9 \
 -re diff.nb.txt -me nb
