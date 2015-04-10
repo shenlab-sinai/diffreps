@@ -11,8 +11,8 @@ use strict;
 use Math::CDF qw(ppois);
 use MyBioinfo::Common qw( min );
 use constant INF => 1e10;
-use constant WIN1 => 2e5;	# 200kb.
-use constant WIN2 => 1e6;	# 1Mb.
+# use constant WIN1 => 2e5;	# 200kb.
+# use constant WIN2 => 1e6;	# 1Mb.
 
 require Exporter;
 our @ISA = qw(Exporter);
@@ -28,11 +28,14 @@ our @EXPORT_OK = qw( cmpsite );
 # vs. smaller one.
 sub new{
 	my $class = shift;
+	my($w1, $w2) = @_;
 	my $self = {
 		siteList => [],			# diff site list.
 		# each site is a hash: (chrom, start, end, siteCenter, recLoc).
 		curPos => 0,			# current position in site list.
 		glbLambda => undef,		# global lambda: avg inter-distance between two sites.
+		win1 => $w1,			# 1st local window size.
+		win2 => $w2,			# 2nd local window size.
 		clust => {
 			from => undef,		# start position (in the list) of cluster.
 			to => undef,		# end position (in the list) of cluster.
@@ -116,11 +119,11 @@ sub calc_locL{
 	for($w_loc = $c_loc + $di; $w_loc >= 0 and $w_loc < $nsite; $w_loc += $di){
 		my $w_site = $self->{'siteList'}->[$w_loc];	# window site.
 		my $d = &site_dist_di($di, $w_site, $c_site);	# distance between two sites.
-		if(!$tag1 and $d > WIN1){	# pass window1 for the first time?
+		if(!$tag1 and $d > $self->{'win1'}){	# pass window1 for the first time?
 			($dist1,$seg1) = $self->last_dist_seg_di($di, $w_loc, $c_loc, $c_site);
 			$tag1 = 1;	# set tag for window1.
 		}
-		if($d > WIN2){	# pass window2.
+		if($d > $self->{'win2'}){	# pass window2.
 			($dist2,$seg2) = $self->last_dist_seg_di($di, $w_loc, $c_loc, $c_site);
 			last;
 		}
