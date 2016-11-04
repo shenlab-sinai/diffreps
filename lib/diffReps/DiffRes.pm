@@ -67,8 +67,13 @@ sub sigeval{
 	my $d2 = $l_d2 + $r_d2;
 	my $s2 = $l_s2 + $r_s2;
 
+	# Exception: the local lambda estimate may become zero if two sites' start
+	# positions coincide with each other. To prevent dividing by zero, set the
+	# lambda estimate to 1bp.
 	my $L1 = $s1 > 0? $d1 / $s1 : INF;	# local lambda 1.
+	$L1 = $L1 == 0? 1 : $L1;
 	my $L2 = $s2 > 0? $d2 / $s2 : INF;	# local lambda 2.
+	$L2 = $L2 == 0? 1 : $L2;
 
 	my $L_min = &min($L1, $L2, $self->{'glbLambda'});
 	if($L_min != INF and defined $self->{'clust'}{'dist'}){
