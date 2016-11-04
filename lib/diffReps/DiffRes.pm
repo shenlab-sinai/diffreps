@@ -1,5 +1,5 @@
 use 5.006;
-our $VERSION = '1.11';
+our $VERSION = '1.11.2';
 
 # Package to analyze the ChIP-seq differential analysis results.
 # Contains functions to manipulate and score a cluster of diff sites.

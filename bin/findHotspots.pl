@@ -2,7 +2,7 @@
 # Identify chromatin modification hotspots from differential analysis results.
 
 use strict;
-our $VERSION = '1.11';
+our $VERSION = '1.11.2';
 use Getopt::Long;
 use diffReps::DiffRes;
 

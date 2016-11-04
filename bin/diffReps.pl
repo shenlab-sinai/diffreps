@@ -16,7 +16,7 @@
 
 use 5.006;
 use strict;
-our $VERSION = '1.55.4';
+our $VERSION = '1.55.6';
 use Getopt::Long;
 use MyBioinfo::Common;
 use MyBioinfo::Common qw(mean_r mad);
