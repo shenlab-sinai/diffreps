@@ -6,10 +6,10 @@ our $VERSION = '1.11';
 use Getopt::Long;
 use diffReps::DiffRes;
 
-my $sign = 1e-2;
-my $win1 = 2e5;
-my $win2 = 1e6;
-my $iformat = '7';
+my $sign = 1e-3;
+my $win1 = 1e6;
+my $win2 = 5e6;
+my $iformat = '11';
 my @diffList;
 my $output;
 my $cmd = join(' ', $0, @ARGV);
@@ -22,11 +22,11 @@ if(@ARGV < 1 or !GetOptions('diff=s{1,}' => \@diffList,
 	print "Usage: findHotspots.pl --diff diff_file1..[diff_fileN] --output output_file \\\n";
 	print "         [--pval p_value_cutoff] [--infocol info_cols_output]\n\n";
 	print "Optional parameters(defaults in parentheses):\n";
-	print "--pval(0.01)     P-value cutoff for significant clusters.\n";
-	print "--win1(200000)   1st window size for local lambda.\n";
-	print "--win2(1000000)  2nd window size for local lambda.\n";
-	print "--infocol(7)     Columns to extract as output. Use 0 to select none.\n";
-	print "                 Default=7, which is the event column in diffReps output.\n";
+	print "--pval(0.001)    P-value cutoff for significant clusters.\n";
+	print "--win1(1000000)  1st window size for local lambda.\n";
+	print "--win2(5000000)  2nd window size for local lambda.\n";
+	print "--infocol(11)    Columns to extract as output. Use 0 to select none.\n";
+	print "                 Default=11, which is the event column in diffReps output.\n";
 	print "                 Format example: 4,6-8,11 will extract column 4,6,7,8 and 11.\n";
 	exit 0;
 }
