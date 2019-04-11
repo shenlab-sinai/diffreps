@@ -265,7 +265,7 @@ sub sep_chrom_bed{
 	my %hsh_chrname;	# hash of chromosome file names.
 	# Create chromosome files for writing.
 	foreach my $chrom(@chrname){
-		my ($fh, $chrfile) = tempfile( "diffreps$chrom.bed.XXXXX", TMPDIR => 1 );
+		my ($fh, $chrfile) = tempfile( "diffreps-$chrom-XXXXXXXXXX", SUFFIX => ".bed", TMPDIR => 1 );
 		$hsh_chrfile{$chrom} = $fh;
 		$hsh_chrname{$chrom} = $chrfile;
 	}
