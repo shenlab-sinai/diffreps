@@ -16,6 +16,7 @@ package MyShortRead::MyShortRead;
 
 use POSIX;
 use Time::HiRes qw(time);
+use File::Temp qw(tempfile);
 
 require Exporter;
 our @ISA = qw(Exporter);
@@ -264,12 +265,7 @@ sub sep_chrom_bed{
 	my %hsh_chrname;	# hash of chromosome file names.
 	# Create chromosome files for writing.
 	foreach my $chrom(@chrname){
-		my $chrfile = $timehead . $chrom . ".bed";
-		while(-e $chrfile){	# prevent existing files from being overridden.
-			$chrfile = ($timehead + rand) . $chrom . ".bed";
-		}
-		my $fh;
-		open $fh, ">", $chrfile or die "Cannot create bed file:$!\n";
+		my ($fh, $chrfile) = tempfile( "diffreps$chrom.bed.XXXXX", TMPDIR => 1 );
 		$hsh_chrfile{$chrom} = $fh;
 		$hsh_chrname{$chrom} = $chrfile;
 	}
