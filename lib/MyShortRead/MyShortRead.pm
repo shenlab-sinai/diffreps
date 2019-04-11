@@ -28,7 +28,7 @@ our @ISA = qw(Exporter);
 # If you do not need this, moving things directly into @EXPORT or @EXPORT_OK
 # will save memory.
 our %EXPORT_TAGS = ( 'all' => [ qw(
-	
+
 ) ] );
 
 our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
@@ -40,17 +40,17 @@ our $VERSION = '1.00';
 
 # Preloaded methods go here.
 
-# Comparing two genomic intervals according to start or end position. 
+# Comparing two genomic intervals according to start or end position.
 sub compare2{
   my($a,$b) = @_;
-  my $cmpby = 'start'; 
+  my $cmpby = 'start';
   if(@_ > 2) {$cmpby = $_[2];}
 
   $a->{chrom} =~ /^(chr)?(\w+)$/;
   my $chr1 = $2;
   $b->{chrom} =~ /^(chr)?(\w+)$/;
   my $chr2 = $2;
-  
+
   # $chr1 = 100 if uc $chr1 eq 'X';
   # $chr1 = 101 if uc $chr1 eq 'Y';
   # $chr1 = 102 if uc $chr1 eq 'M';
@@ -85,7 +85,7 @@ sub order_chr{
   # # Get rid of 'chr' if exists.
   # $chr1 =~ /^(chr)?(\w+)$/; $chr1 = $2;
   # $chr2 =~ /^(chr)?(\w+)$/; $chr2 = $2;
-  # # Convert letters to large numbers.  
+  # # Convert letters to large numbers.
   # $chr1 = 100 if uc $chr1 eq 'X';
   # $chr1 = 101 if uc $chr1 eq 'Y';
   # $chr1 = 102 if uc $chr1 eq 'M';
@@ -122,7 +122,7 @@ sub find_lowest_list{
 sub overlap2{
   my($refintrv1, $refintrv2) = @_;
   if($refintrv1->{chrom} eq $refintrv2->{chrom}){
-    if($refintrv1->{'start'} <= $refintrv2->{'end'} and 
+    if($refintrv1->{'start'} <= $refintrv2->{'end'} and
        $refintrv1->{'end'} >= $refintrv2->{'start'}){
       return 1;
     }
@@ -336,7 +336,7 @@ MyShortRead::MyShortRead - My Perl library to deal with nextgen short read data.
 
 =head1 DESCRIPTION
 
-  This module contains a few functions that I created to perform some operations on 
+  This module contains a few functions that I created to perform some operations on
   short read data from next-generation sequencing machines. They include separate a
   BED file according to chromosomes; bin genome and count the number of reads; compare
   two genomic intervals and determine which one comes first(on the left side).
