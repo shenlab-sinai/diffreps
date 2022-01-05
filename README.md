@@ -159,11 +159,8 @@ Shen L, Shao N-Y, Liu X, Maze I, Feng J, et al. (2013) diffReps: Detecting Diffe
 
 PAPERS THAT CITE DIFFREPS
 -------------------------
-A list of papers that cite diffReps found by Google Scholar:
+A [list of papers](https://scholar.google.com/scholar?hl=en&as_sdt=5,33&cites=11143041154318133867&scipsc=&q=&scisbd=1) that cite diffReps found by Google Scholar.
 
-<https://scholar.google.com/scholar?hl=en&as_sdt=5,33&cites=11143041154318133867&scipsc=&q=&scisbd=1>
-
-Let us know if you have used diffReps in your research!
 
 CONTACT
 -------
