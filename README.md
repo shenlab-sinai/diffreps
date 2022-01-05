@@ -1,3 +1,14 @@
+Shield: [![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
+
+This work is licensed under a
+[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License][cc-by-nc-sa].
+
+[![CC BY-NC-SA 4.0][cc-by-nc-sa-image]][cc-by-nc-sa]
+
+[cc-by-nc-sa]: http://creativecommons.org/licenses/by-nc-sa/4.0/
+[cc-by-nc-sa-image]: https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png
+[cc-by-nc-sa-shield]: https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg
+
 NEWS
 ----
 The diffReps project has migrated from Google code to Github. The original download files can be found in the **Downloads** folder.
@@ -141,11 +152,6 @@ RUNNING TIME
 
 The running time of diffReps totally depends on data and parameter settings. It can vary wildly between 30min and 10h. The most influential parameters on running time are window size and step size. The smaller the window size, the longer the running time which scales linearly.
 
-COMMERCIAL USE
---------------
-
-diffReps is free for use by academic users. If you want to use it in commercial settings, please contact Lisa Placanica at: lisa.placanica@mssm.edu
-
 HOW TO CITE
 -----------
 
@@ -162,4 +168,7 @@ Let us know if you have used diffReps in your research!
 CONTACT
 -------
 
-diffReps is developed and maintained by Dr. Li Shen at the Icahn School of Medicine at Mount Sinai. For technical issues, please post your questions to the discussion forum. If you want to collaborate with us, you may write to:  li.shen@mssm.edu
+diffReps is developed by Dr. Li Shen at the Icahn School of Medicine at Mount Sinai. For technical issues, please post your questions to the discussion forum. If you want to collaborate with us, you may write to:  li.shen**AT**mssm.edu.
+
+# TERMS OF USE
+All data is free to use for non-commercial purposes. For commercial use please contact [MSIP](https://www.ip.mountsinai.org/).
